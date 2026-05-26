@@ -181,4 +181,4 @@ Every endpoint has one observable status code per outcome — nothing surprising
 - 201 / 200 / 204 / 404 / 409 / 422 — pick the right one for each outcome. Status codes are documentation.
 
 ---
-*Prerequisites: `day-8-pydantic-discriminated-unions-for-polymorphic-schemas`, `day-8-schema-validation-patterns`, `day-8-mongodb-document-modeling-for-variable-shape-data`.*
+*Prerequisites: `day-08-modeling-polymorphic-data-discriminated-unions-tagged-enums-single-shape`, `day-08-schema-validation-patterns`, `day-08-mongodb-document-modeling-for-variable-shape-data`.*

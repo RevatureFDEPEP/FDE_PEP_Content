@@ -145,4 +145,4 @@ The trap: green smoke, latent bug. Recognize these signals:
 - Green smoke + clean logs + known parity gaps = high confidence "done."
 
 ---
-*Prerequisites: day-2-local-orchestration-with-docker-compose, day-2-container-debugging-logs-exec-troubleshooting, day-10-multi-service-feature-delivery-patterns.*
+*Prerequisites: day-2-local-orchestration-with-docker-compose, day-2-container-debugging-logs-exec-troubleshooting, day-10-multi-service-feature-delivery-impact-mapping-and-cross-cutting-infrastructure-changes.*

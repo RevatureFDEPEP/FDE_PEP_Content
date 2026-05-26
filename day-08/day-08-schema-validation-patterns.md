@@ -170,4 +170,4 @@ The frontend (Day 9) parses `loc`, finds the message, and shows it next to the o
 - Pair each validator with a parametrized pytest case in Topic 6 — the validator and its test are a single unit of work.
 
 ---
-*Prerequisites: `day-8-pydantic-discriminated-unions-for-polymorphic-schemas`.*
+*Prerequisites: `day-08-modeling-polymorphic-data-discriminated-unions-tagged-enums-single-shape`.*

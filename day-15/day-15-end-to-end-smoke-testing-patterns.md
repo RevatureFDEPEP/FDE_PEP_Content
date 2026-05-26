@@ -165,4 +165,4 @@ When the cohort says "let's add X to the smoke test," ask: "does X belong at a d
 - Smoke is the *contract layer* — gateway-visible behavior. Internal-state assertions belong at integration-test depth (Topic 6).
 
 ---
-*Prerequisites: day-10-multi-service-feature-delivery-patterns, day-12-idempotency-for-retried-mutations, day-15-vertical-slice-integration-in-a-local-compose-environment.*
+*Prerequisites: day-10-multi-service-feature-delivery-impact-mapping-and-cross-cutting-infrastructure-changes, day-12-idempotency-for-retried-mutations, day-15-vertical-slice-integration-in-a-local-compose-environment.*

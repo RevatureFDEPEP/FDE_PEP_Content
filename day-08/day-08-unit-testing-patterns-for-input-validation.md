@@ -232,4 +232,4 @@ If the validator regresses ("accepts negative numbers" when it shouldn't), the p
 - The Day 7 CI matrix already runs this in parallel — no infrastructure changes needed.
 
 ---
-*Prerequisites: `day-8-pydantic-discriminated-unions-for-polymorphic-schemas`, `day-8-schema-validation-patterns`, Day 4 (CI quality gates that run this suite), Day 7 (matrix parallelization).*
+*Prerequisites: `day-08-modeling-polymorphic-data-discriminated-unions-tagged-enums-single-shape`, `day-08-schema-validation-patterns`, Day 4 (CI quality gates that run this suite), Day 7 (matrix parallelization).*

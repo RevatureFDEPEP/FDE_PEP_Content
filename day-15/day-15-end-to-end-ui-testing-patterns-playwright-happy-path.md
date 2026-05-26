@@ -4,7 +4,7 @@
 > *Week 3: Quiz-Taking Slice (Sessions, Scoring, Results)*
 
 ## Overview
-v2.3 of the curriculum closes the E2E gap. The smoke script in Topic 2 proves the *services* are alive; it doesn't prove a *user* can drive a real browser through the quiz-taking flow. That requires a browser, a DOM, JavaScript hydration, real `fetch` requests, real autosave timers, real form interactions. Playwright is the tool. Today we write *one* Playwright test — the quiz-taking happy path — and wire it into the CI job alongside the smoke script. It's the highest-confidence test we'll write in PEP, and also the slowest; that asymmetry shapes how we use it.
+E2E testing closes the verification gap above unit and integration tests. The smoke script in Topic 2 proves the *services* are alive; it doesn't prove a *user* can drive a real browser through the quiz-taking flow. If Playwright isn't already wired into `frontend/`, wiring it up (install, download browsers, base config) is part of this topic — the Setup section below covers it. That requires a browser, a DOM, JavaScript hydration, real `fetch` requests, real autosave timers, real form interactions. Playwright is the tool. Today we write *one* Playwright test — the quiz-taking happy path — and wire it into the CI job alongside the smoke script. It's the highest-confidence test we'll write in PEP, and also the slowest; that asymmetry shapes how we use it.
 
 ## Why Playwright, Not Cypress
 

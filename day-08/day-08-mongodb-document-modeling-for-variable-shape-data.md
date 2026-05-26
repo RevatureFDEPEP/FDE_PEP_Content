@@ -159,4 +159,4 @@ The whole loop, end-to-end, is one collection, one repository, no joins.
 - `Question.model_validate(doc)` on read re-runs validators — defensive, cheap, and worth it.
 
 ---
-*Prerequisites: `day-8-pydantic-discriminated-unions-for-polymorphic-schemas`, `day-8-schema-validation-patterns`, Day 2 (MongoDB containerization).*
+*Prerequisites: `day-08-modeling-polymorphic-data-discriminated-unions-tagged-enums-single-shape`, `day-08-schema-validation-patterns`, Day 2 (MongoDB containerization).*

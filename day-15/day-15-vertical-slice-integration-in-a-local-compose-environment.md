@@ -143,4 +143,4 @@ Anything that works in Compose has a high probability of working in ECS. Anythin
 - Common failure modes (auth not forwarded, clock drift, autosave race, request-id loss, cross-store join error) are predictable — name them in advance so the cohort recognizes them when they appear.
 
 ---
-*Prerequisites: day-10-multi-service-feature-delivery-patterns, day-2-healthchecks-and-service-dependency-conditions, day-11-opaque-token-generation-and-session-identifiers, day-14-optimistic-updates-vs-server-confirmation.*
+*Prerequisites: day-10-multi-service-feature-delivery-impact-mapping-and-cross-cutting-infrastructure-changes, day-2-healthchecks-and-service-dependency-conditions, day-11-opaque-token-generation-and-session-identifiers, day-14-optimistic-updates-vs-server-confirmation.*
