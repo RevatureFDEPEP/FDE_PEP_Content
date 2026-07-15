@@ -5,24 +5,27 @@
 > *AI Tooling Thread*
 
 ## Overview
+
 Claude Code is exceptionally good at generating root-cause hypotheses for CI failures — give it a workflow file and a failing log, and you'll get five plausible explanations in seconds. It is also exceptionally good at confidently generating wrong hypotheses dressed in convincing prose. Today's discipline, carried forward from Day 1, is **read before you change**: use Claude Code as a hypothesis generator, but validate every hypothesis against the actual source before you treat it as fact and before you propose any fix.
+
+This lesson teaches you a methodology you'll apply to any CI failure you encounter in this program and beyond. The framework is: triage logs (Day 3.05 skill), generate hypotheses with Claude, validate each one systematically, and only commit the ones you've verified.
 
 ## The hypothesis-generator mode
 
-For today's deliverable — five bugs in `ci-pipeline.yml`, each with a root-cause hypothesis, no fixes — Claude Code is well-suited to the *generation* half of the job. It can read your workflow file and your failing log in one prompt and produce candidate explanations faster than you can.
+Claude Code is well-suited to the *generation* half of debugging work. It can read your workflow file and your failing log in one prompt and produce candidate explanations faster than you can.
 
 The trap is that it produces those candidates whether or not they're right. Some will be correct. Some will be plausible but wrong (e.g., it will diagnose a real-looking YAML issue that actually parses fine). A few will be confidently fabricated (the model "remembers" that `actions/cache@v3` deprecated some flag when it didn't).
 
 Your job is to use the agent for what it's good at (volume of plausible hypotheses, fast recall of common patterns) and not for what it's bad at (ground truth about your specific repo). The structure: **generate broadly, then validate narrowly**.
 
-## The four-step workflow for today
+## The four-step workflow for any CI failure
 
-1. **Run the pipeline.** Get a real failure log.
-2. **Prompt Claude Code for hypotheses.** Give it the workflow file and the failure log. Ask for ranked hypotheses, not fixes.
+1. **Triage the logs.** (Use the discipline from [Day 3.05](05-workflow-log-triage-to-localize-failures.md).) Find the failing job, failing step, and first error. Form an initial hypothesis.
+2. **Expand your hypothesis list with Claude.** Feed it the workflow file and the failure log. Ask for ranked hypotheses, not fixes. Generate more candidates than you think you need.
 3. **Validate each hypothesis against the source.** For each one, open the relevant file or setting and confirm the claim. Reject hypotheses you can't substantiate.
-4. **Write the deliverable from validated hypotheses only.** The final list goes to your trainer; it must be defensible.
+4. **Commit only the validated hypotheses.** Once you've verified a hypothesis against the actual code/repo settings, you can act on it (document it, propose a fix, etc.).
 
-The agent participates in step 2. Steps 3 and 4 are yours.
+The agent excels at step 2. Steps 1, 3, and 4 are your responsibility.
 
 ## Concrete prompts for hypothesis generation
 
@@ -30,7 +33,7 @@ These are prompt templates you can use in Claude Code today, adapted to whicheve
 
 ### Prompt 1: Bulk hypothesis generation
 
-> Read `.github/workflows/ci-pipeline.yml` in full. The pipeline has been seeded with five deliberate bugs that produce CI failures or silent misbehavior. Without fixing anything, generate ten candidate hypotheses for things that might be wrong, ranked by how likely each is to be a real bug. For each, cite the specific line range in the file. Do not propose fixes.
+> Read `.github/workflows/ci-pipeline.yml` in full. The pipeline has bugs that produce CI failures or silent misbehavior. Without fixing anything, generate ten candidate hypotheses for things that might be wrong, ranked by how likely each is to be a real bug. For each, cite the specific line range in the file. Do not propose fixes.
 
 What this prompt does well:
 - Asks for **more hypotheses than you need** (ten, not five). Over-generation is cheap; you'll filter.
@@ -122,6 +125,7 @@ The agent did the heavy lifting of *generating* three candidates. You did the li
 - **Asking for fixes in the same prompt as hypotheses.** The agent will helpfully fix the wrong thing. Keep diagnosis and fix in separate prompts (and Day 4 is for fixes anyway).
 - **Letting the agent's first answer anchor your investigation.** Ask for more hypotheses than you need, so you have alternatives to compare.
 - **Forgetting to re-read after the agent has cited a line range.** Always open the file and read the lines yourself.
+- **Validating hypotheses in your head instead of against the actual source.** "That sounds like it could cause the error" is not validation. Open the file. Read the line. Check the repo settings. Write it down if it's true.
 
 ## Key Takeaways
 
@@ -129,7 +133,7 @@ The agent did the heavy lifting of *generating* three candidates. You did the li
 - Ask for ranked hypotheses with explicit citations to file lines and log lines. Citations make the validation step tractable.
 - Use a second adversarial prompt ("argue against your own hypothesis") to flush out confident fabrications.
 - The agent is reliable for explaining well-documented patterns; unreliable for specific values from your repo (secrets, configured settings) and for exact action release dates.
-- For today's deliverable, every bug on your list must be validated against the actual file or repo settings before it goes on the page. The agent's output is input to your investigation, not output from it.
+- **Every hypothesis you act on must be validated against the actual file or repo settings.** The agent's output is input to your investigation, not output from it. Commit only what you can defend.
 
 ---
 *Prerequisites: [02-ai-augmented-development-claude-code-agent-tooling-fundamentals.md](../day-01/02-ai-augmented-development-claude-code-agent-tooling-fundamentals.md), [04-ai-assisted-brownfield-comprehension.md](../day-02/04-ai-assisted-brownfield-comprehension.md), [05-workflow-log-triage-to-localize-failures.md](05-workflow-log-triage-to-localize-failures.md).*
